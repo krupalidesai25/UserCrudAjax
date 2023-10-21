@@ -42,7 +42,8 @@ class UserController extends Controller
         $id =  $request->id ?? NULL;
         $rules = [
             'name' => 'required|max:255',
-            'contact_no' => 'required|unique:users,contact_no,' . $id . ',id|regex:/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/',
+            'contact_no' => 'required|unique:users,contact_no,' . $id . ',id|digits:10',
+            // 'contact_no' => 'required|unique:users,contact_no,' . $id . ',id|regex:/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/',
             'category_id' => 'required|exists:categories,id',
             'hobby' => 'required|array',
             'profile_pic' => 'required_without:id|image|mimes:jpeg,png,jpg|max:2048',
